@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjbx3jxe5ysn1"]
+
+[ext_resource type="Shader" path="res://TestGravity.gdshader" id="1_upx0y"]
+[ext_resource type="Script" path="res://Body.gd" id="2_k8rev"]
+[ext_resource type="PackedScene" uid="uid://ds0ea63k65jry" path="res://planet.tscn" id="3_utbkh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebahq"]
+shader = ExtResource("1_upx0y")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t84ru"]
+radius = 19.105
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ebahq")
+offset_left = -402.0
+offset_top = -140.0
+offset_right = -362.0
+offset_bottom = -100.0
+scale = Vector2(44.8015, 27.0332)
+
+[node name="Body" type="RigidBody2D" parent="."]
+position = Vector2(-81, 145)
+gravity_scale = 0.0
+script = ExtResource("2_k8rev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource("CircleShape2D_t84ru")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Body"]
+
+[node name="Planet4" parent="." instance=ExtResource("3_utbkh")]
+position = Vector2(277, 120)
+radius = 100.0
+
+[node name="Planet5" parent="." instance=ExtResource("3_utbkh")]
+position = Vector2(292, 402)
+radius = 100.0
+
+[node name="Planet6" parent="." instance=ExtResource("3_utbkh")]
+position = Vector2(-119, -60)
+radius = 100.0
+
+[node name="Planet7" parent="." instance=ExtResource("3_utbkh")]
+position = Vector2(-389, 330)
+radius = 100.0
+
+[node name="Control" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Acceleration: "

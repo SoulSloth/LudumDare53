@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=3 uid="uid://cie4nlnv7vyn7"]
+
+[ext_resource type="Texture2D" uid="uid://vb8u6730hmg7" path="res://assets/particles/..png" id="1_5x42u"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_ft0wt"]
+
+[sub_resource type="Gradient" id="Gradient_caslo"]
+offsets = PackedFloat32Array(0.0653846, 0.246154, 1)
+colors = PackedColorArray(0.172549, 0.105882, 0.180392, 1, 0.94902, 0.713726, 0.239216, 1, 0.882937, 0.661994, 0.234209, 1)
+
+[sub_resource type="Gradient" id="Gradient_py416"]
+offsets = PackedFloat32Array(0.203846, 0.738462, 1)
+colors = PackedColorArray(0.172549, 0.105882, 0.180392, 1, 0.94902, 0.713726, 0.239216, 1, 0.882937, 0.661994, 0.234209, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ft0wt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -163.0
+offset_top = -34.0
+offset_right = -123.0
+offset_bottom = 6.0
+scale = Vector2(39.9132, 17.632)
+color = Color(0, 0, 0, 1)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(1195, 144)
+scale = Vector2(0.616943, 0.616943)
+amount = 100
+lifetime = 10.0
+preprocess = 10.0
+texture = ExtResource("1_5x42u")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 250)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = 1000.0
+angular_velocity_max = 1000.0
+scale_amount_min = 0.01
+scale_amount_max = 0.01
+color_ramp = SubResource("Gradient_caslo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.94902, 0.713726, 0.239216, 1)
+position = Vector2(-52, 292)
+scale = Vector2(0.616943, 0.616943)
+texture = ExtResource("1_5x42u")
+
+[node name="Foreground Rocks" type="CPUParticles2D" parent="."]
+position = Vector2(-50, 508)
+scale = Vector2(0.616943, 0.616943)
+amount = 100
+lifetime = 11.0
+preprocess = 10.0
+texture = ExtResource("1_5x42u")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 250)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = 1000.0
+angular_velocity_max = 1000.0
+scale_amount_min = 0.02
+scale_amount_max = 0.03
+color_ramp = SubResource("Gradient_py416")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 36
+text = "Play"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0.580392, 0.207843, 0.239216, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center] Two For Flinching"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

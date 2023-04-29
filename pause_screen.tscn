@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd2f3rurw0vk3"]
+
+[ext_resource type="Script" path="res://pause_screen.gd" id="1_38uo6"]
+[ext_resource type="Texture2D" uid="uid://vb8u6730hmg7" path="res://assets/particles/..png" id="2_uc37t"]
+
+[sub_resource type="Animation" id="Animation_hr8gu"]
+resource_name = "orbit"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_uj10l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xh734"]
+_data = {
+"RESET": SubResource("Animation_uj10l"),
+"orbit": SubResource("Animation_hr8gu")
+}
+
+[node name="PauseScreen" type="CanvasLayer"]
+process_mode = 3
+scale = Vector2(1.02406, 0.992925)
+transform = Transform2D(1.02406, 0, 0, 0.992925, 0, 0)
+script = ExtResource("1_38uo6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -17.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 36.0
+scale = Vector2(29.096, 16.966)
+color = Color(0, 0, 0, 0.784314)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 2
+root_node = NodePath("../Body")
+autoplay = "orbit"
+libraries = {
+"": SubResource("AnimationLibrary_xh734")
+}
+
+[node name="Sun" type="Sprite2D" parent="."]
+modulate = Color(0.94902, 0.713726, 0.239216, 1)
+position = Vector2(581.999, 326.309)
+scale = Vector2(0.0926683, 0.0926683)
+texture = ExtResource("2_uc37t")
+
+[node name="Body" type="Sprite2D" parent="."]
+modulate = Color(0.580392, 0.207843, 0.239216, 1)
+position = Vector2(581.022, 330.337)
+scale = Vector2(0.0379375, 0.0379375)
+texture = ExtResource("2_uc37t")
+offset = Vector2(-3114.52, 1937.93)
+
+[node name="MarginContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 11.0784
+offset_bottom = 11.0784
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0.94902, 0.713726, 0.239216, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center] Paused"
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 28
+text = "Resume"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
