@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds0ea63k65jry"]
+[gd_scene load_steps=2 format=3 uid="uid://ds0ea63k65jry"]
 
-[ext_resource type="Script" path="res://planet.gd" id="1_rwfkv"]
+[sub_resource type="GDScript" id="GDScript_ac2aa"]
+script/source = "extends StaticBody2D
+@export_range(0.1,100.0) var mass: float = 1.0;
+@export_range(0.1,1000.0) var plant_speed: float = 500.0;
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qetwp"]
-radius = 100.0
+var orbit_path: PathFollow2D;
 
-[node name="Planet" type="StaticBody2D"]
-script = ExtResource("1_rwfkv")
+func _ready():
+	orbit_path = get_node_or_null(\"../%sPath/PathFollow2D\" % name);
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["planet"]]
-shape = SubResource("CircleShape2D_qetwp")
-debug_color = Color(0.866667, 0, 0.854902, 0.419608)
-metadata/_edit_lock_ = true
+func _process(delta):
+	if(orbit_path != null):
+		orbit_path.progress += delta*plant_speed;
+		position = orbit_path.position;
+"
+
+[node name="Planet" type="StaticBody2D" groups=["planet"]]
+script = SubResource("GDScript_ac2aa")

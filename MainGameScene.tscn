@@ -1,58 +1,268 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjbx3jxe5ysn1"]
+[gd_scene load_steps=21 format=3 uid="uid://bjbx3jxe5ysn1"]
 
 [ext_resource type="Shader" path="res://TestGravity.gdshader" id="1_upx0y"]
-[ext_resource type="Script" path="res://Body.gd" id="2_k8rev"]
+[ext_resource type="Script" path="res://planet.gd" id="3_ihqqv"]
 [ext_resource type="PackedScene" uid="uid://ds0ea63k65jry" path="res://planet.tscn" id="3_utbkh"]
+[ext_resource type="Script" path="res://macGun.gd" id="4_vv8hb"]
+[ext_resource type="Texture2D" uid="uid://tag1onfmtd8x" path="res://assets/macGun/platform.png" id="4_y8lv7"]
+[ext_resource type="Texture2D" uid="uid://dt87smm2fcvvp" path="res://assets/macGun/theGun.png" id="5_62m76"]
+[ext_resource type="Script" path="res://UI.gd" id="5_i2m01"]
+[ext_resource type="Texture2D" uid="uid://b62le6m15s4fd" path="res://assets/ui/package.png" id="8_l33is"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ebahq"]
 shader = ExtResource("1_upx0y")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t84ru"]
-radius = 19.105
+[sub_resource type="CircleShape2D" id="CircleShape2D_h450s"]
+radius = 271.184
+
+[sub_resource type="Curve2D" id="Curve2D_gxna0"]
+_data = {
+"points": PackedVector2Array(-2.33289, 664.284, 2.33289, -664.284, 1152, -1, 36.0952, -709.819, -36.0952, 709.819, -811, 8, 14.3191, 643.628, -14.3191, -643.628, 1152, -1)
+}
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ihr5n"]
+radius = 156.003
+
+[sub_resource type="Curve2D" id="Curve2D_mjomf"]
+_data = {
+"points": PackedVector2Array(-619.063, 920.125, 619.063, -920.125, 1453, 436, 677.371, -997.494, -677.371, 997.494, -1460, -992, -1208.3, 1488.67, 1208.3, -1488.67, 1452, 435)
+}
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvkn5"]
+radius = 156.003
+
+[sub_resource type="Curve2D" id="Curve2D_hvrjw"]
+_data = {
+"points": PackedVector2Array(-810.333, 1872.28, 810.333, -1872.28, 1652, 838, 996.095, -1261.82, -996.095, 1261.82, -1858, -1243, -1605.59, 2009.98, 1605.59, -2009.98, 1656, 837)
+}
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wg81b"]
+radius = 156.003
+
+[sub_resource type="Curve2D" id="Curve2D_t8qw7"]
+_data = {
+"points": PackedVector2Array(-287.076, 484.05, 287.076, -484.05, 189, 163, 95.0009, -176.799, -95.0009, 176.799, -233, -130, -269.588, 321.975, 269.588, -321.975, 189, 161)
+}
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0j5m8"]
+radius = 44.1814
+
+[sub_resource type="Curve2D" id="Curve2D_vd0pj"]
+_data = {
+"points": PackedVector2Array(-241.718, 277.423, 241.718, -277.423, 142, 119, 110.12, -167.979, -110.12, 167.979, -167, -105, -209.112, 230.001, 209.112, -230.001, 141, 120)
+}
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_18hmq"]
+radius = 23.1948
 
 [node name="Node2D" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ebahq")
-offset_left = -402.0
-offset_top = -140.0
-offset_right = -362.0
-offset_bottom = -100.0
-scale = Vector2(44.8015, 27.0332)
+offset_left = -2479.0
+offset_top = -1578.0
+offset_right = -2439.0
+offset_bottom = -1538.0
+scale = Vector2(119.47, 87.2496)
 
-[node name="Body" type="RigidBody2D" parent="."]
-position = Vector2(-81, 145)
-gravity_scale = 0.0
-script = ExtResource("2_k8rev")
+[node name="The Sun" parent="." instance=ExtResource("3_utbkh")]
+position = Vector2(10, -4)
+script = ExtResource("3_ihqqv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-shape = SubResource("CircleShape2D_t84ru")
-metadata/_edit_lock_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="The Sun"]
+shape = SubResource("CircleShape2D_h450s")
+debug_color = Color(0.623529, 0.533333, 0, 0.419608)
 
-[node name="Camera2D" type="Camera2D" parent="Body"]
+[node name="MercuryPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gxna0")
 
-[node name="Planet4" parent="." instance=ExtResource("3_utbkh")]
-position = Vector2(277, 120)
-radius = 100.0
+[node name="PathFollow2D" type="PathFollow2D" parent="MercuryPath"]
+position = Vector2(1152, -1)
+rotation = -1.56728
 
-[node name="Planet5" parent="." instance=ExtResource("3_utbkh")]
-position = Vector2(292, 402)
-radius = 100.0
+[node name="Mercury" parent="." instance=ExtResource("3_utbkh")]
+position = Vector2(709, -175)
+script = ExtResource("3_ihqqv")
 
-[node name="Planet6" parent="." instance=ExtResource("3_utbkh")]
-position = Vector2(-119, -60)
-radius = 100.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mercury"]
+shape = SubResource("CircleShape2D_ihr5n")
+debug_color = Color(0, 0.635294, 0.423529, 0.627451)
 
-[node name="Planet7" parent="." instance=ExtResource("3_utbkh")]
-position = Vector2(-389, 330)
-radius = 100.0
+[node name="VenusPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_mjomf")
 
-[node name="Control" type="CanvasLayer" parent="."]
+[node name="PathFollow2D" type="PathFollow2D" parent="VenusPath"]
+position = Vector2(1453, 436)
+rotation = -0.978557
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="Venus" parent="." instance=ExtResource("3_utbkh")]
+position = Vector2(-770, 159)
+script = ExtResource("3_ihqqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Venus"]
+shape = SubResource("CircleShape2D_yvkn5")
+debug_color = Color(0.811765, 0.294118, 0.72549, 0.627451)
+
+[node name="EarthPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_hvrjw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EarthPath"]
+position = Vector2(1652, 838)
+rotation = -1.16233
+
+[node name="Earth" parent="." instance=ExtResource("3_utbkh")]
+position = Vector2(-231, -928)
+script = ExtResource("3_ihqqv")
+plant_speed = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth"]
+shape = SubResource("CircleShape2D_wg81b")
+debug_color = Color(0.12549, 0.584314, 0.74902, 0.627451)
+
+[node name="MoonPath" type="Path2D" parent="Earth"]
+curve = SubResource("Curve2D_t8qw7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Earth/MoonPath"]
+position = Vector2(189, 163)
+rotation = -1.03549
+
+[node name="Moon" parent="Earth" instance=ExtResource("3_utbkh")]
+position = Vector2(340, 92)
+script = ExtResource("3_ihqqv")
+plant_speed = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth/Moon"]
+shape = SubResource("CircleShape2D_0j5m8")
+debug_color = Color(0.898039, 0.203922, 0.592157, 0.627451)
+
+[node name="macGunPath" type="Path2D" parent="Earth"]
+curve = SubResource("Curve2D_vd0pj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Earth/macGunPath"]
+position = Vector2(142, 119)
+rotation = -0.854067
+
+[node name="macGun" type="StaticBody2D" parent="Earth"]
+position = Vector2(94, 285)
+script = ExtResource("4_vv8hb")
+plant_speed = 10.0
+
+[node name="TheGun" type="Sprite2D" parent="Earth/macGun"]
+position = Vector2(3.8147e-06, 0)
+scale = Vector2(0.153879, 0.153879)
+texture = ExtResource("5_62m76")
+offset = Vector2(259.944, -6.49854)
+
+[node name="Platform" type="Sprite2D" parent="Earth/macGun"]
+position = Vector2(1, 1)
+scale = Vector2(0.12254, 0.12254)
+texture = ExtResource("4_y8lv7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth/macGun"]
+shape = SubResource("CircleShape2D_18hmq")
+
+[node name="Camera2D" type="Camera2D" parent="Earth/macGun"]
+
+[node name="Debug Menu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug Menu"]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Control/VBoxContainer"]
+[node name="Label" type="Label" parent="Debug Menu/VBoxContainer"]
 layout_mode = 2
 text = "Acceleration: "
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("5_i2m01")
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
+offset_left = 20.0
+offset_top = 584.0
+offset_right = 60.0
+offset_bottom = 624.0
+scale = Vector2(3.5637, 1.04294)
+color = Color(0.17262, 0.1062, 0.18, 0.490196)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Score" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ScoreLabel" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Score"]
+custom_minimum_size = Vector2(95, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "Bonus:"
+fit_content = true
+
+[node name="ScoreValue" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Score"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "$0
+"
+fit_content = true
+
+[node name="Packages" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="1" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Packages"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+texture = ExtResource("8_l33is")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="2" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Packages"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+texture = ExtResource("8_l33is")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="3" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Packages"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+texture = ExtResource("8_l33is")
+expand_mode = 1
+stretch_mode = 5

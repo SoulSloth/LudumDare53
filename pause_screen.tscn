@@ -3,6 +3,21 @@
 [ext_resource type="Script" path="res://pause_screen.gd" id="1_38uo6"]
 [ext_resource type="Texture2D" uid="uid://vb8u6730hmg7" path="res://assets/particles/..png" id="2_uc37t"]
 
+[sub_resource type="Animation" id="Animation_uj10l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_hr8gu"]
 resource_name = "orbit"
 length = 5.0
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "values": [0.0, 6.28319]
 }
 
-[sub_resource type="Animation" id="Animation_uj10l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xh734"]
 _data = {
 "RESET": SubResource("Animation_uj10l"),
@@ -43,6 +43,7 @@ _data = {
 
 [node name="PauseScreen" type="CanvasLayer"]
 process_mode = 3
+layer = 100
 scale = Vector2(1.02406, 0.992925)
 transform = Transform2D(1.02406, 0, 0, 0.992925, 0, 0)
 script = ExtResource("1_38uo6")
@@ -86,7 +87,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(500, 500)
+custom_minimum_size = Vector2(500, 550)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
@@ -104,4 +105,18 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 28
 text = "Resume"
 
+[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 28
+text = "Restart"
+
+[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 28
+text = "Main Menu"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

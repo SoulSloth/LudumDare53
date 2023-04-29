@@ -22,10 +22,10 @@ func _on_resume_pressed():
 	resume();
 
 func _on_restart_pressed():
-	SceneChanger.changeScene("res://level.tscn");
+	SceneChanger.changeScene("res://MainGameScene.tscn");
 	resume();
 
 func _on_main_menu_pressed():
-	SceneChanger.changeScene("res://MainMenu.tscn");
+	SceneChanger.changeScene("res://main_menu.tscn");
 	resume();
 

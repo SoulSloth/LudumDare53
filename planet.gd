@@ -1,11 +1,14 @@
 extends StaticBody2D
-@export_range(100.0,1000.0,0.2) var radius: float;
-@onready var collision_shape_2d = $CollisionShape2D
+@export_range(0.1,100.0) var mass: float = 1.0;
+@export_range(0.1,1000.0) var plant_speed: float = 500.0;
+
+var orbit_path: PathFollow2D;
 
 func _ready():
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", Vector2(-1000,0), 10)
+	orbit_path = get_node_or_null("../%sPath/PathFollow2D" % name);
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
-	pass
+	if(orbit_path != null):
+		orbit_path.progress += delta*plant_speed;
+		position = orbit_path.position;

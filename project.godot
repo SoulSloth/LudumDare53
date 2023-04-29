@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="LudumDare53"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 
 [autoload]
 
 SceneChanger="*res://Scene_changer.tscn"
 PauseScreen="*res://pause_screen.tscn"
+Statuses="*res://statuses.tscn"
 
 [display]
 
