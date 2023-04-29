@@ -1,2 +1,5 @@
-#+title: Ludum Dare 53
-[[https://ldj.am/$332127][Ludum Dare 53]]: Theme is Delivery.
+#+title: Two For Flinching 📦🚀
+[[https://ldj.am/$332127][Ludum Dare 53 Entry]]: Theme is Delivery.
+
+** Concept
+Deliver packages to targets in a solar system via a MAC(Mass Accelerator Cannon), also refereed to as a "Railgun".
