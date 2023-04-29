@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds0ea63k65jry"]
+
+[ext_resource type="Script" path="res://planet.gd" id="1_rwfkv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qetwp"]
+radius = 100.0
+
+[node name="Planet" type="StaticBody2D"]
+script = ExtResource("1_rwfkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["planet"]]
+shape = SubResource("CircleShape2D_qetwp")
+debug_color = Color(0.866667, 0, 0.854902, 0.419608)
+metadata/_edit_lock_ = true
