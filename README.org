@@ -1,5 +1,9 @@
 #+title: Two For Flinching 📦🚀
-[[https://ldj.am/$332127][Ludum Dare 53 Entry]]: Theme is Delivery.
+Game Submission for:
+- [[https://ldj.am/$332127][Ludum Dare 53]]: Theme is Delivery.
+- [[https://itch.io/jam/mini-jam-131-solar][Mini-jam 131 Solar]]: Restriction is "Failure is progress"
 
 ** Concept
 Deliver packages to targets in a solar system via a MAC(Mass Accelerator Cannon), also refereed to as a "Railgun".
+- "Failure is progress": the package landing on another planet still nets you money. 
+
