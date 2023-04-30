@@ -13,3 +13,4 @@ func _process(delta):
 	if(orbit_path != null):
 		orbit_path.progress += delta*plant_speed;
 		position = orbit_path.position;
+		print("%s is at position %.2f %.2f" % [name, position.x, position.y])

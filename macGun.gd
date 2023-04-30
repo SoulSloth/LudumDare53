@@ -1,4 +1,5 @@
 extends StaticBody2D
+signal packageFired;
 @export_range(0.1,100.0) var mass: float = 1.0;
 @export_range(0.1,1000.0) var plant_speed: float = 500.0;
 @onready var camera_2d = $"Camera2D"
@@ -27,6 +28,7 @@ func _process(delta):
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed() and ready_to_fire:
+		emit_signal("packageFired");
 		var package = packageResoruce.instantiate();
 		var direction: Vector2 = Vector2.from_angle(the_gun.rotation);
 		$"../..".add_child(package);

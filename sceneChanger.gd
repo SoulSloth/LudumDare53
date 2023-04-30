@@ -7,8 +7,8 @@ func changeScene(path: String) -> void:
 
 func _deferred_goto_scene(path: String) -> void:
 	if(path == "res://MainGameScene.tscn"):
-		Statuses.current_bonus = 0;
-		Statuses.packagesToDeliver = 3;
+		Statuses.reset_game();
+
 	current_scene.free()
 	var s = ResourceLoader.load(path)
 	current_scene = s.instantiate()

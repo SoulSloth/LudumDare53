@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjbx3jxe5ysn1"]
+[gd_scene load_steps=29 format=3 uid="uid://bjbx3jxe5ysn1"]
 
 [ext_resource type="Shader" path="res://TestGravity.gdshader" id="1_upx0y"]
 [ext_resource type="Texture2D" uid="uid://ura6l8ohrmhn" path="res://assets/particles/star.png" id="2_n3vnt"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bdg3abwkwmgax" path="res://assets/planets/Knoll.png" id="7_k5b0i"]
 [ext_resource type="Texture2D" uid="uid://b62le6m15s4fd" path="res://assets/ui/package.png" id="8_l33is"]
 [ext_resource type="Texture2D" uid="uid://ciut1leg2mdx6" path="res://assets/planets/Moon.png" id="9_r7hyd"]
+[ext_resource type="Texture2D" uid="uid://jrdn37qbus36" path="res://assets/Package.png" id="14_jia8t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ebahq"]
 shader = ExtResource("1_upx0y")
@@ -39,15 +40,6 @@ point_count = 3
 [sub_resource type="CircleShape2D" id="CircleShape2D_yvkn5"]
 radius = 148.003
 
-[sub_resource type="Curve2D" id="Curve2D_hvrjw"]
-_data = {
-"points": PackedVector2Array(-810.333, 1872.28, 810.333, -1872.28, 1652, 838, 996.095, -1261.82, -996.095, 1261.82, -1858, -1243, -1605.59, 2009.98, 1605.59, -2009.98, 1656, 837)
-}
-point_count = 3
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wg81b"]
-radius = 156.003
-
 [sub_resource type="Curve2D" id="Curve2D_t8qw7"]
 _data = {
 "points": PackedVector2Array(-287.076, 484.05, 287.076, -484.05, 189, 163, 95.0009, -176.799, -95.0009, 176.799, -233, -130, -269.588, 321.975, 269.588, -321.975, 189, 161)
@@ -56,6 +48,15 @@ point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0j5m8"]
 radius = 44.1814
+
+[sub_resource type="Curve2D" id="Curve2D_hvrjw"]
+_data = {
+"points": PackedVector2Array(-810.333, 1872.28, 810.333, -1872.28, 1652, 838, 996.095, -1261.82, -996.095, 1261.82, -1858, -1243, -1605.59, 2009.98, 1605.59, -2009.98, 1656, 837)
+}
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wg81b"]
+radius = 156.003
 
 [sub_resource type="Curve2D" id="Curve2D_vd0pj"]
 _data = {
@@ -183,133 +184,133 @@ position = Vector2(156.063, 1141.35)
 rotation = 1.03023
 texture = ExtResource("2_n3vnt")
 
-[node name="The Sun" parent="." instance=ExtResource("3_utbkh")]
+[node name="TheSun" parent="." instance=ExtResource("3_utbkh")]
 position = Vector2(10, -4)
 script = ExtResource("3_ihqqv")
 mass = 20.0
 
-[node name="Sprite2D" type="Sprite2D" parent="The Sun"]
+[node name="Sprite2D" type="Sprite2D" parent="TheSun"]
 position = Vector2(-7, 2)
 scale = Vector2(0.635278, 0.635278)
 texture = ExtResource("5_wwaeh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="The Sun"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TheSun"]
 position = Vector2(-7, 4)
 shape = SubResource("CircleShape2D_h450s")
 debug_color = Color(0.623529, 0.533333, 0, 0.419608)
 
-[node name="MercuryPath" type="Path2D" parent="."]
+[node name="HelPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_gxna0")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="MercuryPath"]
+[node name="PathFollow2D" type="PathFollow2D" parent="HelPath"]
 position = Vector2(1152, -1)
 rotation = -1.56728
 
-[node name="Mercury" parent="." instance=ExtResource("3_utbkh")]
+[node name="Hel" parent="." instance=ExtResource("3_utbkh")]
 position = Vector2(709, -175)
 script = ExtResource("3_ihqqv")
 mass = 10.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mercury"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hel"]
 visible = false
 shape = SubResource("CircleShape2D_ihr5n")
 debug_color = Color(0, 0.635294, 0.423529, 0.627451)
 
-[node name="Sprite2D" type="Sprite2D" parent="Mercury"]
+[node name="Sprite2D" type="Sprite2D" parent="Hel"]
 scale = Vector2(0.680497, 0.680497)
 texture = ExtResource("6_blj3g")
 
-[node name="VenusPath" type="Path2D" parent="."]
+[node name="PiousPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_mjomf")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="VenusPath"]
+[node name="PathFollow2D" type="PathFollow2D" parent="PiousPath"]
 position = Vector2(1453, 436)
 rotation = -0.978557
 
-[node name="Venus" parent="." instance=ExtResource("3_utbkh")]
+[node name="Pious" parent="." instance=ExtResource("3_utbkh")]
 position = Vector2(-770, 159)
 script = ExtResource("3_ihqqv")
 mass = 15.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Venus"]
+[node name="Sprite2D" type="Sprite2D" parent="Pious"]
 scale = Vector2(0.551255, 0.551255)
 texture = ExtResource("6_1luvc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Venus"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pious"]
 visible = false
 shape = SubResource("CircleShape2D_yvkn5")
 debug_color = Color(0.811765, 0.294118, 0.72549, 0.627451)
 
-[node name="EarthPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_hvrjw")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="EarthPath"]
-position = Vector2(1652, 838)
-rotation = -1.16233
-
-[node name="Earth" parent="." instance=ExtResource("3_utbkh")]
-position = Vector2(-231, -928)
-script = ExtResource("3_ihqqv")
-plant_speed = 100.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Earth"]
-scale = Vector2(0.61741, 0.61741)
-texture = ExtResource("7_k5b0i")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth"]
-visible = false
-shape = SubResource("CircleShape2D_wg81b")
-debug_color = Color(0.12549, 0.584314, 0.74902, 0.627451)
-
-[node name="MoonPath" type="Path2D" parent="Earth"]
+[node name="MoonPath" type="Path2D" parent="Pious"]
 curve = SubResource("Curve2D_t8qw7")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Earth/MoonPath"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Pious/MoonPath"]
 position = Vector2(189, 163)
 rotation = -1.03549
 
-[node name="Moon" parent="Earth" instance=ExtResource("3_utbkh")]
-position = Vector2(340, 92)
+[node name="Moon" parent="Pious" instance=ExtResource("3_utbkh")]
 script = ExtResource("3_ihqqv")
-plant_speed = 20.0
+plant_speed = 100.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth/Moon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pious/Moon"]
 visible = false
 shape = SubResource("CircleShape2D_0j5m8")
 debug_color = Color(0.898039, 0.203922, 0.592157, 0.627451)
 
-[node name="Sprite2D" type="Sprite2D" parent="Earth/Moon"]
+[node name="Sprite2D" type="Sprite2D" parent="Pious/Moon"]
 scale = Vector2(0.277693, 0.276769)
 texture = ExtResource("9_r7hyd")
 
-[node name="macGunPath" type="Path2D" parent="Earth"]
+[node name="KnollPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_hvrjw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="KnollPath"]
+position = Vector2(1652, 838)
+rotation = -1.16233
+
+[node name="Knoll" parent="." instance=ExtResource("3_utbkh")]
+position = Vector2(-231, -928)
+script = ExtResource("3_ihqqv")
+plant_speed = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Knoll"]
+scale = Vector2(0.61741, 0.61741)
+texture = ExtResource("7_k5b0i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knoll"]
+visible = false
+shape = SubResource("CircleShape2D_wg81b")
+debug_color = Color(0.12549, 0.584314, 0.74902, 0.627451)
+
+[node name="macGunPath" type="Path2D" parent="Knoll"]
 curve = SubResource("Curve2D_vd0pj")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Earth/macGunPath"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Knoll/macGunPath"]
 position = Vector2(142, 119)
 rotation = -0.854067
 
-[node name="macGun" type="StaticBody2D" parent="Earth"]
+[node name="macGun" type="StaticBody2D" parent="Knoll"]
+unique_name_in_owner = true
 position = Vector2(94, 285)
 script = ExtResource("4_vv8hb")
 plant_speed = 10.0
 
-[node name="TheGun" type="Sprite2D" parent="Earth/macGun"]
+[node name="TheGun" type="Sprite2D" parent="Knoll/macGun"]
 position = Vector2(3.8147e-06, 0)
 scale = Vector2(0.153879, 0.153879)
 texture = ExtResource("5_62m76")
 offset = Vector2(259.944, -6.49854)
 
-[node name="Platform" type="Sprite2D" parent="Earth/macGun"]
+[node name="Platform" type="Sprite2D" parent="Knoll/macGun"]
 position = Vector2(1, 1)
 scale = Vector2(0.12254, 0.12254)
 texture = ExtResource("4_y8lv7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth/macGun"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knoll/macGun"]
 visible = false
 shape = SubResource("CircleShape2D_18hmq")
 
-[node name="Camera2D" type="Camera2D" parent="Earth/macGun"]
+[node name="Camera2D" type="Camera2D" parent="Knoll/macGun"]
 
 [node name="Debug Menu" type="CanvasLayer" parent="."]
 visible = false
@@ -351,41 +352,51 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
+alignment = 1
 
-[node name="Score" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Ammo" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
+alignment = 1
 
-[node name="ScoreLabel" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Score"]
-custom_minimum_size = Vector2(95, 20)
+[node name="1" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Ammo"]
+custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 10
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 2
-theme_override_font_sizes/normal_font_size = 28
-text = "Bonus:"
-fit_content = true
+texture = ExtResource("14_jia8t")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="ScoreValue" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Score"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 0)
+[node name="2" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Ammo"]
+custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 10
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 2
-theme_override_font_sizes/normal_font_size = 28
-text = "$0
-"
-fit_content = true
+texture = ExtResource("14_jia8t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="3" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Ammo"]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+texture = ExtResource("14_jia8t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="4" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Ammo"]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+texture = ExtResource("14_jia8t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="5" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Ammo"]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+texture = ExtResource("14_jia8t")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Packages" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 10
 
@@ -404,6 +415,20 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="3" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Packages"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+texture = ExtResource("8_l33is")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="4" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Packages"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+texture = ExtResource("8_l33is")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="5" type="TextureRect" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Packages"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 texture = ExtResource("8_l33is")

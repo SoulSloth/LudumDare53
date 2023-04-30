@@ -2,3 +2,4 @@
 .godot/
 *.kra
 /assets/assets.kra~
+/export/

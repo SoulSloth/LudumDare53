@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b51upwhfr318q"]
+[gd_scene load_steps=7 format=3 uid="uid://b51upwhfr318q"]
 
 [ext_resource type="Script" path="res://game_over.gd" id="1_ahhpq"]
+[ext_resource type="Texture2D" uid="uid://div8ubjn1kxye" path="res://assets/planets/Hel.png" id="2_pkesk"]
+[ext_resource type="Texture2D" uid="uid://bdg3abwkwmgax" path="res://assets/planets/Knoll.png" id="3_0hvc4"]
+[ext_resource type="Texture2D" uid="uid://ciut1leg2mdx6" path="res://assets/planets/Moon.png" id="4_uplda"]
+[ext_resource type="Texture2D" uid="uid://cb4qsfuj2orwy" path="res://assets/planets/Pious.png" id="5_4tpg8"]
+[ext_resource type="Texture2D" uid="uid://b6bve8au3raf8" path="res://assets/planets/TheSun.png" id="6_qu5fn"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -47,27 +52,49 @@ theme_override_constants/shadow_outline_size = 5
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "[center] Shift Over"
+text = "[center][wave] Mission Complete"
 fit_content = true
 
-[node name="Score" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(360, 0)
+[node name="bodies" type="GridContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_shadow_color = Color(0.580392, 0.207843, 0.239216, 1)
-theme_override_colors/font_outline_color = Color(0.184314, 0.168627, 0.360784, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 5
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "Your Bonus:"
-fit_content = true
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 3
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="Hel" type="TextureRect" parent="MarginContainer/HBoxContainer/bodies"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_vertical = 3
+texture = ExtResource("2_pkesk")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Knoll" type="TextureRect" parent="MarginContainer/HBoxContainer/bodies"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("3_0hvc4")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Moon" type="TextureRect" parent="MarginContainer/HBoxContainer/bodies"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("4_uplda")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Pious" type="TextureRect" parent="MarginContainer/HBoxContainer/bodies"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+texture = ExtResource("5_4tpg8")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="TheSun" type="TextureRect" parent="MarginContainer/HBoxContainer/bodies"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+texture = ExtResource("6_qu5fn")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="PlayAgain" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2

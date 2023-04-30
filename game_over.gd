@@ -1,8 +1,13 @@
 extends Control
-@onready var score = $MarginContainer/HBoxContainer/Score
+@onready var bodies = $MarginContainer/HBoxContainer/bodies
 
 func _ready():
-	score.text = "Your Bonus: [wave]$%s" % Statuses.current_bonus;
+	if(Statuses.deliveredTo.size() < 5):
+		$MarginContainer/HBoxContainer/Title.text = "[center][shake rate=5.0 level=20]Mission Failed";
+		$MarginContainer/HBoxContainer/Title.add_theme_color_override("font_shadow_color", Color.DARK_RED);
+	for body in bodies.get_children():
+		if !Statuses.deliveredTo.has(body.name):
+			body.modulate = Color(0.2,0.2,0.1,1);
 
 func _on_main_menu_pressed():
 	SceneChanger.changeScene("res://main_menu.tscn")
