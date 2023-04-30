@@ -5,6 +5,7 @@ extends RigidBody2D
 @onready var camera_2d = $Camera2D;
 @onready var shrapnel = $CPUParticles2D
 @onready var delivery_timer = $deliveryTimer
+@onready var package = $Package;
 
 const zoom_increment : Vector2 = Vector2(0.25,0.25);
 const zoom_max : Vector2 = Vector2(20,20);
@@ -15,6 +16,7 @@ var accel : Vector2 = Vector2.ZERO;
 var gunRef;
 
 func _process(_delta):
+	package.look_at(accel)
 	if(contact_monitor and !get_colliding_bodies().is_empty()):
 		var colliding_body := get_colliding_bodies()[0];
 		Statuses.package_delivered(colliding_body.name);
@@ -24,6 +26,7 @@ func _process(_delta):
 		freeze = true;
 		delivery_timer.connect("timeout",_on_delivery_complete);
 		delivery_timer.start();
+		package.hide();
 
 func _input(event: InputEvent):
 	##

@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpt3ojjy0v5cs"]
+[gd_scene load_steps=6 format=3 uid="uid://cpt3ojjy0v5cs"]
 
 [ext_resource type="Script" path="res://Body.gd" id="1_62htw"]
 [ext_resource type="Texture2D" uid="uid://b1hy66f0rp010" path="res://assets/particles/shrapnel-1.png" id="2_3ukxl"]
+[ext_resource type="Texture2D" uid="uid://jrdn37qbus36" path="res://assets/Package.png" id="3_jgtvh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t84ru"]
-radius = 19.105
+[sub_resource type="Gradient" id="Gradient_6bbt3"]
+offsets = PackedFloat32Array(0.458182, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jwxl"]
+size = Vector2(21, 28)
 
 [node name="Package" type="RigidBody2D"]
 position = Vector2(-1199, -585)
@@ -13,10 +18,6 @@ max_contacts_reported = 5
 contact_monitor = true
 script = ExtResource("1_62htw")
 metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_t84ru")
-metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false
@@ -42,7 +43,18 @@ angle_min = -112.9
 angle_max = 131.8
 scale_amount_min = 0.05
 scale_amount_max = 0.05
+color_ramp = SubResource("Gradient_6bbt3")
 
 [node name="deliveryTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Package" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.174947, 0.174947)
+texture = ExtResource("3_jgtvh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_4jwxl")
+metadata/_edit_lock_ = true

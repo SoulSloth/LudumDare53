@@ -27,7 +27,6 @@ func _process(delta):
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed() and ready_to_fire:
-		print("fire")
 		var package = packageResoruce.instantiate();
 		var direction: Vector2 = Vector2.from_angle(the_gun.rotation);
 		$"../..".add_child(package);

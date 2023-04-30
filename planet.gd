@@ -6,7 +6,8 @@ var orbit_path: PathFollow2D;
 
 func _ready():
 	orbit_path = get_node_or_null("../%sPath/PathFollow2D" % name);
-
+	if(orbit_path):
+		orbit_path.progress_ratio = randf_range(0.0,1.0);
 
 func _process(delta):
 	if(orbit_path != null):

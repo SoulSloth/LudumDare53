@@ -1,13 +1,19 @@
-[gd_scene load_steps=21 format=3 uid="uid://bjbx3jxe5ysn1"]
+[gd_scene load_steps=28 format=3 uid="uid://bjbx3jxe5ysn1"]
 
 [ext_resource type="Shader" path="res://TestGravity.gdshader" id="1_upx0y"]
+[ext_resource type="Texture2D" uid="uid://ura6l8ohrmhn" path="res://assets/particles/star.png" id="2_n3vnt"]
 [ext_resource type="Script" path="res://planet.gd" id="3_ihqqv"]
 [ext_resource type="PackedScene" uid="uid://ds0ea63k65jry" path="res://planet.tscn" id="3_utbkh"]
 [ext_resource type="Script" path="res://macGun.gd" id="4_vv8hb"]
 [ext_resource type="Texture2D" uid="uid://tag1onfmtd8x" path="res://assets/macGun/platform.png" id="4_y8lv7"]
 [ext_resource type="Texture2D" uid="uid://dt87smm2fcvvp" path="res://assets/macGun/theGun.png" id="5_62m76"]
 [ext_resource type="Script" path="res://UI.gd" id="5_i2m01"]
+[ext_resource type="Texture2D" uid="uid://b6bve8au3raf8" path="res://assets/planets/TheSun.png" id="5_wwaeh"]
+[ext_resource type="Texture2D" uid="uid://cb4qsfuj2orwy" path="res://assets/planets/Pious.png" id="6_1luvc"]
+[ext_resource type="Texture2D" uid="uid://div8ubjn1kxye" path="res://assets/planets/Hel.png" id="6_blj3g"]
+[ext_resource type="Texture2D" uid="uid://bdg3abwkwmgax" path="res://assets/planets/Knoll.png" id="7_k5b0i"]
 [ext_resource type="Texture2D" uid="uid://b62le6m15s4fd" path="res://assets/ui/package.png" id="8_l33is"]
+[ext_resource type="Texture2D" uid="uid://ciut1leg2mdx6" path="res://assets/planets/Moon.png" id="9_r7hyd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ebahq"]
 shader = ExtResource("1_upx0y")
@@ -31,7 +37,7 @@ _data = {
 point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yvkn5"]
-radius = 156.003
+radius = 148.003
 
 [sub_resource type="Curve2D" id="Curve2D_hvrjw"]
 _data = {
@@ -60,9 +66,13 @@ point_count = 3
 [sub_resource type="CircleShape2D" id="CircleShape2D_18hmq"]
 radius = 23.1948
 
+[sub_resource type="Gradient" id="Gradient_j1lr3"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_ebahq")
 offset_left = -2479.0
 offset_top = -1578.0
@@ -70,11 +80,121 @@ offset_right = -2439.0
 offset_bottom = -1538.0
 scale = Vector2(119.47, 87.2496)
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.290196, 0.478431, 0.588235, 0.607843)
+
+[node name="Star" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-1601, -1140)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-1520, 378)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(707, 1078)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1398, -188)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(276, -1023)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(186, -350)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-1008, -655)
+texture = ExtResource("2_n3vnt")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(1, 1, 1, 0.101961)
+position = Vector2(102, 356)
+rotation = 1.43172
+
+[node name="Star" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(-1601, -1140)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(-1520, 378)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(707, 1078)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1398, -188)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(276, -1023)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(186, -350)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(-1008, -655)
+texture = ExtResource("2_n3vnt")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.172549, 0.105882, 0.180392, 0.552941)
+position = Vector2(1164, -409)
+rotation = 1.43172
+scale = Vector2(4.74788, 4.74788)
+
+[node name="Star" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(-436.938, 656.347)
+rotation = 1.03023
+texture = ExtResource("2_n3vnt")
+
+[node name="Star2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(-534.764, -436.828)
+rotation = 1.03023
+texture = ExtResource("2_n3vnt")
+
+[node name="Star3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(707, 1078)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(1398, -188)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(276, -1023)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(186, -350)
+texture = ExtResource("2_n3vnt")
+
+[node name="Star7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(156.063, 1141.35)
+rotation = 1.03023
+texture = ExtResource("2_n3vnt")
+
 [node name="The Sun" parent="." instance=ExtResource("3_utbkh")]
 position = Vector2(10, -4)
 script = ExtResource("3_ihqqv")
+mass = 20.0
+
+[node name="Sprite2D" type="Sprite2D" parent="The Sun"]
+position = Vector2(-7, 2)
+scale = Vector2(0.635278, 0.635278)
+texture = ExtResource("5_wwaeh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="The Sun"]
+position = Vector2(-7, 4)
 shape = SubResource("CircleShape2D_h450s")
 debug_color = Color(0.623529, 0.533333, 0, 0.419608)
 
@@ -88,10 +208,16 @@ rotation = -1.56728
 [node name="Mercury" parent="." instance=ExtResource("3_utbkh")]
 position = Vector2(709, -175)
 script = ExtResource("3_ihqqv")
+mass = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mercury"]
+visible = false
 shape = SubResource("CircleShape2D_ihr5n")
 debug_color = Color(0, 0.635294, 0.423529, 0.627451)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mercury"]
+scale = Vector2(0.680497, 0.680497)
+texture = ExtResource("6_blj3g")
 
 [node name="VenusPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_mjomf")
@@ -103,8 +229,14 @@ rotation = -0.978557
 [node name="Venus" parent="." instance=ExtResource("3_utbkh")]
 position = Vector2(-770, 159)
 script = ExtResource("3_ihqqv")
+mass = 15.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Venus"]
+scale = Vector2(0.551255, 0.551255)
+texture = ExtResource("6_1luvc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Venus"]
+visible = false
 shape = SubResource("CircleShape2D_yvkn5")
 debug_color = Color(0.811765, 0.294118, 0.72549, 0.627451)
 
@@ -120,7 +252,12 @@ position = Vector2(-231, -928)
 script = ExtResource("3_ihqqv")
 plant_speed = 100.0
 
+[node name="Sprite2D" type="Sprite2D" parent="Earth"]
+scale = Vector2(0.61741, 0.61741)
+texture = ExtResource("7_k5b0i")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Earth"]
+visible = false
 shape = SubResource("CircleShape2D_wg81b")
 debug_color = Color(0.12549, 0.584314, 0.74902, 0.627451)
 
@@ -137,8 +274,13 @@ script = ExtResource("3_ihqqv")
 plant_speed = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Earth/Moon"]
+visible = false
 shape = SubResource("CircleShape2D_0j5m8")
 debug_color = Color(0.898039, 0.203922, 0.592157, 0.627451)
+
+[node name="Sprite2D" type="Sprite2D" parent="Earth/Moon"]
+scale = Vector2(0.277693, 0.276769)
+texture = ExtResource("9_r7hyd")
 
 [node name="macGunPath" type="Path2D" parent="Earth"]
 curve = SubResource("Curve2D_vd0pj")
@@ -164,6 +306,7 @@ scale = Vector2(0.12254, 0.12254)
 texture = ExtResource("4_y8lv7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Earth/macGun"]
+visible = false
 shape = SubResource("CircleShape2D_18hmq")
 
 [node name="Camera2D" type="Camera2D" parent="Earth/macGun"]
@@ -266,3 +409,20 @@ layout_mode = 2
 texture = ExtResource("8_l33is")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(473, -511)
+explosiveness = 0.2
+texture = ExtResource("2_n3vnt")
+emission_shape = 3
+emission_rect_extents = Vector2(50, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 100)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = 300.0
+angular_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_j1lr3")
