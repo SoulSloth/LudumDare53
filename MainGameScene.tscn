@@ -1,9 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjbx3jxe5ysn1"]
+[gd_scene load_steps=40 format=3 uid="uid://bjbx3jxe5ysn1"]
 
-[ext_resource type="Shader" path="res://TestGravity.gdshader" id="1_upx0y"]
 [ext_resource type="Texture2D" uid="uid://ura6l8ohrmhn" path="res://assets/particles/star.png" id="2_n3vnt"]
 [ext_resource type="Script" path="res://planet.gd" id="3_ihqqv"]
 [ext_resource type="PackedScene" uid="uid://ds0ea63k65jry" path="res://planet.tscn" id="3_utbkh"]
+[ext_resource type="Texture2D" uid="uid://b1hy66f0rp010" path="res://assets/particles/shrapnel-1.png" id="3_wa8r3"]
 [ext_resource type="Script" path="res://macGun.gd" id="4_vv8hb"]
 [ext_resource type="Texture2D" uid="uid://tag1onfmtd8x" path="res://assets/macGun/platform.png" id="4_y8lv7"]
 [ext_resource type="Texture2D" uid="uid://dt87smm2fcvvp" path="res://assets/macGun/theGun.png" id="5_62m76"]
@@ -14,10 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://bdg3abwkwmgax" path="res://assets/planets/Knoll.png" id="7_k5b0i"]
 [ext_resource type="Texture2D" uid="uid://b62le6m15s4fd" path="res://assets/ui/package.png" id="8_l33is"]
 [ext_resource type="Texture2D" uid="uid://ciut1leg2mdx6" path="res://assets/planets/Moon.png" id="9_r7hyd"]
+[ext_resource type="Texture2D" uid="uid://dbv33eqewh51l" path="res://assets/particles/smallStar.png" id="11_nm0ms"]
+[ext_resource type="AudioStream" uid="uid://bc0qwe0ebg41v" path="res://assets/sfx/macShoot.wav" id="12_sgmuu"]
+[ext_resource type="AudioStream" uid="uid://cyfwdovk22rfa" path="res://assets/sfx/ominousNoise.wav" id="13_srrfy"]
 [ext_resource type="Texture2D" uid="uid://jrdn37qbus36" path="res://assets/Package.png" id="14_jia8t"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebahq"]
-shader = ExtResource("1_upx0y")
+[ext_resource type="Script" path="res://Tutorial.gd" id="15_k2mx5"]
+[ext_resource type="Texture2D" uid="uid://ckaairosxwf6u" path="res://assets/File.png" id="15_plhd6"]
+[ext_resource type="AudioStream" uid="uid://ban03bheto4b8" path="res://assets/sfx/packageDestroyed.wav" id="15_y4kos"]
+[ext_resource type="AudioStream" uid="uid://ch45dwsfk4v7b" path="res://assets/music/mainGameTheme.wav" id="17_om7jw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h450s"]
 radius = 271.184
@@ -51,7 +55,7 @@ radius = 44.1814
 
 [sub_resource type="Curve2D" id="Curve2D_hvrjw"]
 _data = {
-"points": PackedVector2Array(-810.333, 1872.28, 810.333, -1872.28, 1652, 838, 996.095, -1261.82, -996.095, 1261.82, -1858, -1243, -1605.59, 2009.98, 1605.59, -2009.98, 1656, 837)
+"points": PackedVector2Array(2789.67, 1760.28, -2789.67, -1760.28, 1329, -1042, -883.905, -1677.82, 883.905, 1677.82, -2079, 1334, 2731.15, 2116.1, -2731.15, -2116.1, 1321, -1050)
 }
 point_count = 3
 
@@ -60,26 +64,39 @@ radius = 156.003
 
 [sub_resource type="Curve2D" id="Curve2D_vd0pj"]
 _data = {
-"points": PackedVector2Array(-241.718, 277.423, 241.718, -277.423, 142, 119, 110.12, -167.979, -110.12, 167.979, -167, -105, -209.112, 230.001, 209.112, -230.001, 141, 120)
+"points": PackedVector2Array(-998.424, 1279.06, 998.424, -1279.06, 2031, 1070, 2119.68, -2048.09, -2119.68, 2048.09, -2035, -1554, -1312.8, 1807.42, 1312.8, -1807.42, 2031, 1057)
 }
 point_count = 3
 
+[sub_resource type="Curve" id="Curve_urkxs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.437984, 0.790909), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_tsmke"]
+offsets = PackedFloat32Array(0.198238, 0.674009, 0.973568)
+colors = PackedColorArray(0.49, 0.813, 1, 1, 0.49, 0.813, 1, 0.937255, 0.2891, 0.47967, 0.59, 0)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_18hmq"]
 radius = 23.1948
+
+[sub_resource type="Curve" id="Curve_hnifm"]
+_data = [Vector2(0, 0.809091), 0.0, 0.0, 0, 0, Vector2(0.27907, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.654545), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_p7px1"]
+offsets = PackedFloat32Array(0, 0.22467)
+colors = PackedColorArray(0.580392, 0.207843, 0.239216, 1, 0.94902, 0.713726, 0.239216, 1)
+
+[sub_resource type="Curve" id="Curve_qdb6q"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -13.0909), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_j1lr3"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [node name="Node2D" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_ebahq")
-offset_left = -2479.0
-offset_top = -1578.0
-offset_right = -2439.0
-offset_bottom = -1538.0
-scale = Vector2(119.47, 87.2496)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -265,13 +282,13 @@ texture = ExtResource("9_r7hyd")
 curve = SubResource("Curve2D_hvrjw")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="KnollPath"]
-position = Vector2(1652, 838)
-rotation = -1.16233
+position = Vector2(1329, -1042)
+rotation = -2.57869
 
 [node name="Knoll" parent="." instance=ExtResource("3_utbkh")]
 position = Vector2(-231, -928)
 script = ExtResource("3_ihqqv")
-plant_speed = 100.0
+plant_speed = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Knoll"]
 scale = Vector2(0.61741, 0.61741)
@@ -282,35 +299,127 @@ visible = false
 shape = SubResource("CircleShape2D_wg81b")
 debug_color = Color(0.12549, 0.584314, 0.74902, 0.627451)
 
-[node name="macGunPath" type="Path2D" parent="Knoll"]
+[node name="macGunPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_vd0pj")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Knoll/macGunPath"]
-position = Vector2(142, 119)
-rotation = -0.854067
+[node name="PathFollow2D" type="PathFollow2D" parent="macGunPath"]
+position = Vector2(2031, 1070)
+rotation = -0.908001
 
-[node name="macGun" type="StaticBody2D" parent="Knoll"]
+[node name="macGun" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(94, 285)
+position = Vector2(857, 1068)
 script = ExtResource("4_vv8hb")
-plant_speed = 10.0
+plant_speed = 200.0
 
-[node name="TheGun" type="Sprite2D" parent="Knoll/macGun"]
+[node name="TheGun" type="Sprite2D" parent="macGun"]
 position = Vector2(3.8147e-06, 0)
 scale = Vector2(0.153879, 0.153879)
 texture = ExtResource("5_62m76")
 offset = Vector2(259.944, -6.49854)
 
-[node name="Platform" type="Sprite2D" parent="Knoll/macGun"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="macGun"]
+position = Vector2(19.0001, 1)
+emitting = false
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("11_nm0ms")
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+damping_max = 79.57
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_urkxs")
+color_ramp = SubResource("Gradient_tsmke")
+
+[node name="Platform" type="Sprite2D" parent="macGun"]
 position = Vector2(1, 1)
 scale = Vector2(0.12254, 0.12254)
 texture = ExtResource("4_y8lv7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Knoll/macGun"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="macGun"]
 visible = false
 shape = SubResource("CircleShape2D_18hmq")
 
-[node name="Camera2D" type="Camera2D" parent="Knoll/macGun"]
+[node name="Camera2D" type="Camera2D" parent="macGun"]
+
+[node name="Shoot" type="AudioStreamPlayer" parent="macGun"]
+stream = ExtResource("12_sgmuu")
+volume_db = -19.839
+pitch_scale = 0.52
+bus = &"sfx"
+
+[node name="Ominous" type="AudioStreamPlayer" parent="macGun"]
+stream = ExtResource("13_srrfy")
+volume_db = -10.821
+bus = &"sfx"
+
+[node name="MacGunDeath" type="AudioStreamPlayer" parent="macGun"]
+stream = ExtResource("15_y4kos")
+volume_db = -11.168
+pitch_scale = 0.51
+bus = &"sfx"
+
+[node name="Photoid" type="Node2D" parent="macGun"]
+position = Vector2(19122, -6965)
+
+[node name="SmallStar" type="Sprite2D" parent="macGun/Photoid"]
+texture = ExtResource("11_nm0ms")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="macGun/Photoid"]
+amount = 32
+texture = ExtResource("11_nm0ms")
+emission_shape = 1
+emission_sphere_radius = 22.49
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+damping_min = 31.39
+damping_max = 31.39
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="macGun"]
+emitting = false
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.85
+local_coords = true
+texture = ExtResource("11_nm0ms")
+emission_shape = 1
+emission_sphere_radius = 16.88
+spread = 180.0
+gravity = Vector2(0, 0)
+angular_velocity_max = 5.0
+scale_amount_min = 0.1
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_hnifm")
+color_ramp = SubResource("Gradient_p7px1")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="macGun"]
+emitting = false
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("3_wa8r3")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 36.5
+initial_velocity_max = 350.36
+angular_velocity_max = 5.0
+radial_accel_min = 30.0
+radial_accel_max = 30.0
+damping_min = 16.79
+damping_max = 27.73
+angle_min = -10.5
+angle_curve = SubResource("Curve_qdb6q")
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+
+[node name="EndingTimer" type="Timer" parent="macGun"]
+wait_time = 5.0
 
 [node name="Debug Menu" type="CanvasLayer" parent="."]
 visible = false
@@ -451,3 +560,54 @@ angular_velocity_max = 300.0
 scale_amount_min = 0.1
 scale_amount_max = 0.2
 color_ramp = SubResource("Gradient_j1lr3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("15_k2mx5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Sprite2D2"]
+position = Vector2(576, 494)
+scale = Vector2(0.527449, 0.527449)
+texture = ExtResource("15_plhd6")
+
+[node name="Label" type="Label" parent="CanvasLayer/Sprite2D2"]
+offset_left = 133.0
+offset_top = 242.0
+offset_right = 725.0
+offset_bottom = 294.0
+theme_override_colors/font_color = Color(0.580392, 0.207843, 0.239216, 1)
+text = "- Rotate the canon with the mouse. 
+- Fire a package with the Left Mouse Button
+- Zoom with the mouse scroll wheel"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Sprite2D2"]
+offset_left = 550.0
+offset_top = 236.0
+offset_right = 1142.0
+offset_bottom = 288.0
+theme_override_colors/font_color = Color(0.580392, 0.207843, 0.239216, 1)
+text = "Every planet exerts gravational force on the package!
+Deliver a package to each  planet to complete your mission!"
+
+[node name="TheGun" type="Sprite2D" parent="CanvasLayer/Sprite2D2"]
+position = Vector2(299.611, 401.204)
+scale = Vector2(0.295582, 0.295582)
+texture = ExtResource("5_62m76")
+
+[node name="Platform" type="Sprite2D" parent="CanvasLayer/Sprite2D2"]
+position = Vector2(233.611, 399.204)
+scale = Vector2(0.206396, 0.206396)
+texture = ExtResource("4_y8lv7")
+
+[node name="Package" type="Sprite2D" parent="CanvasLayer/Sprite2D2"]
+position = Vector2(379.611, 402.204)
+rotation = -0.634967
+scale = Vector2(0.246396, 0.246396)
+texture = ExtResource("14_jia8t")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_om7jw")
+autoplay = true
+bus = &"Music"

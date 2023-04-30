@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cie4nlnv7vyn7"]
+[gd_scene load_steps=10 format=3 uid="uid://cie4nlnv7vyn7"]
 
 [ext_resource type="Texture2D" uid="uid://vb8u6730hmg7" path="res://assets/particles/..png" id="1_5x42u"]
 [ext_resource type="Script" path="res://main_menu.gd" id="1_ft0wt"]
+[ext_resource type="Texture2D" uid="uid://ccdgywu36jdxp" path="res://assets/export/cannonTitle.png" id="3_wr0jv"]
+[ext_resource type="AudioStream" uid="uid://bftimiskqydnv" path="res://assets/music/openingEndingTrack.wav" id="3_ypa6u"]
 
 [sub_resource type="Gradient" id="Gradient_caslo"]
 offsets = PackedFloat32Array(0.0653846, 0.246154, 1)
@@ -10,6 +12,112 @@ colors = PackedColorArray(0.172549, 0.105882, 0.180392, 1, 0.94902, 0.713726, 0.
 [sub_resource type="Gradient" id="Gradient_py416"]
 offsets = PackedFloat32Array(0.203846, 0.738462, 1)
 colors = PackedColorArray(0.172549, 0.105882, 0.180392, 1, 0.94902, 0.713726, 0.239216, 1, 0.882937, 0.661994, 0.234209, 1)
+
+[sub_resource type="Animation" id="Animation_58645"]
+resource_name = "mainMenu"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(777, -0.25, 0, 0.25, 0, 777, -0.25, 0, 0.25, 0, 777, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3, 6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(284.146, 0, 0, 2, 0.163269, 340.778, -0.800248, -4.88432e-05, 1, 6.10352e-05, 284.515, -1.4, 0, 0, 0),
+"times": PackedFloat32Array(0.2, 3.1, 6.7)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2/Sprite2D4:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.4, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.0705882, 0.0705882, 0.415686), Color(1, 0.0705882, 0.0705882, 0.839216), Color(1, 0.0705882, 0.0705882, 0.415686)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2/Sprite2D5:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.4, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.0705882, 0.0705882, 0.415686), Color(1, 0.0705882, 0.0705882, 1), Color(1, 0.0705882, 0.0705882, 0.415686)]
+}
+
+[sub_resource type="Animation" id="Animation_fo8vx"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(777, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(283, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2/Sprite2D4:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.0705882, 0.0705882, 0.415686)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2/Sprite2D5:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.0705882, 0.0705882, 0.415686)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cqr6r"]
+_data = {
+"RESET": SubResource("Animation_fo8vx"),
+"mainMenu": SubResource("Animation_58645")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -55,8 +163,28 @@ position = Vector2(-52, 292)
 scale = Vector2(0.616943, 0.616943)
 texture = ExtResource("1_5x42u")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(777, 283)
+rotation = 0.266862
+scale = Vector2(0.206879, 0.206879)
+texture = ExtResource("3_wr0jv")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D2"]
+modulate = Color(1, 0.0705882, 0.0705882, 0.415686)
+position = Vector2(126.715, -884.477)
+rotation = -0.266862
+scale = Vector2(0.670539, 0.0501941)
+texture = ExtResource("1_5x42u")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprite2D2"]
+modulate = Color(1, 0.0705882, 0.0705882, 0.415686)
+position = Vector2(-1.58838, -1051.09)
+rotation = -0.266862
+scale = Vector2(0.620585, 0.0548494)
+texture = ExtResource("1_5x42u")
+
 [node name="Foreground Rocks" type="CPUParticles2D" parent="."]
-position = Vector2(-50, 508)
+position = Vector2(-37, 589)
 scale = Vector2(0.616943, 0.616943)
 amount = 100
 lifetime = 11.0
@@ -114,5 +242,16 @@ theme_override_constants/shadow_outline_size = 4
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[center] Two For Flinching"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ypa6u")
+autoplay = true
+bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "mainMenu"
+libraries = {
+"": SubResource("AnimationLibrary_cqr6r")
+}
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

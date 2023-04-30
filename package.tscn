@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpt3ojjy0v5cs"]
+[gd_scene load_steps=10 format=3 uid="uid://cpt3ojjy0v5cs"]
 
 [ext_resource type="Script" path="res://Body.gd" id="1_62htw"]
 [ext_resource type="Texture2D" uid="uid://b1hy66f0rp010" path="res://assets/particles/shrapnel-1.png" id="2_3ukxl"]
 [ext_resource type="Texture2D" uid="uid://jrdn37qbus36" path="res://assets/Package.png" id="3_jgtvh"]
+[ext_resource type="Texture2D" uid="uid://dbv33eqewh51l" path="res://assets/particles/smallStar.png" id="4_a5cdf"]
+[ext_resource type="AudioStream" uid="uid://ban03bheto4b8" path="res://assets/sfx/packageDestroyed.wav" id="4_k2qs5"]
 
 [sub_resource type="Gradient" id="Gradient_6bbt3"]
 offsets = PackedFloat32Array(0.458182, 1)
@@ -10,6 +12,14 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4jwxl"]
 size = Vector2(21, 28)
+
+[sub_resource type="Curve" id="Curve_t61ut"]
+_data = [Vector2(0, 0.836364), 0.0, 0.0, 0, 0, Vector2(0.430233, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.663636), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_einie"]
+offsets = PackedFloat32Array(0.171806, 0.634361, 0.907489)
+colors = PackedColorArray(0.94902, 0.713726, 0.239216, 1, 0.94902, 0.713726, 0.239216, 1, 0.94902, 0.713726, 0.239216, 0.329412)
 
 [node name="Package" type="RigidBody2D"]
 position = Vector2(-1199, -585)
@@ -58,3 +68,23 @@ texture = ExtResource("3_jgtvh")
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_4jwxl")
 metadata/_edit_lock_ = true
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 9
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_a5cdf")
+emission_shape = 1
+emission_sphere_radius = 59.8
+gravity = Vector2(0, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_t61ut")
+color_ramp = SubResource("Gradient_einie")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_k2qs5")
+volume_db = -12.023
+bus = &"sfx"

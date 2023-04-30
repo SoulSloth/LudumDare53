@@ -15,5 +15,4 @@ func _on_package_delivered(_packageIndex: String):
 
 func _on_package_fired():
 	ammo.get_node(str(Statuses.ammo)).modulate = Color(0.5,0.5,0.5,1);
-	print(ammo.get_node(str(Statuses.ammo)).modulate);
 	Statuses.ammo -= 1;

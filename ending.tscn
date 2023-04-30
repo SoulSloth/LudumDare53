@@ -1,0 +1,364 @@
+[gd_scene load_steps=17 format=3 uid="uid://0se44keejwbb"]
+
+[ext_resource type="Texture2D" uid="uid://1fl3sefjbaug" path="res://assets/ending/photoidStrike.png" id="1_3vsy6"]
+[ext_resource type="Script" path="res://ending.gd" id="1_d2o6l"]
+[ext_resource type="Texture2D" uid="uid://ba2umshti6mqo" path="res://assets/ending/moon.png" id="2_14r5x"]
+[ext_resource type="Texture2D" uid="uid://bfqagfxfduj6i" path="res://assets/ending/Hel.png" id="3_l0n5w"]
+[ext_resource type="Texture2D" uid="uid://dkbwbiev106qc" path="res://assets/ending/Knoll.png" id="4_8hg8f"]
+[ext_resource type="Texture2D" uid="uid://cinp0i2hfrkvo" path="res://assets/ending/Pious.png" id="5_kuf6j"]
+[ext_resource type="Shader" path="res://ending.gdshader" id="6_muco1"]
+[ext_resource type="Texture2D" uid="uid://bu3qglmarcl7c" path="res://assets/ending/volcanno.png" id="7_746e3"]
+[ext_resource type="Texture2D" uid="uid://dbv33eqewh51l" path="res://assets/particles/smallStar.png" id="7_nep6w"]
+[ext_resource type="Texture2D" uid="uid://df56jnvwkt7pd" path="res://assets/ending/Observer.png" id="8_isd6i"]
+[ext_resource type="Texture2D" uid="uid://dbecpb7n1jq4j" path="res://assets/ending/package.png" id="9_xxep5"]
+[ext_resource type="AudioStream" uid="uid://bftimiskqydnv" path="res://assets/music/openingEndingTrack.wav" id="10_slgbl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvql3"]
+shader = ExtResource("6_muco1")
+
+[sub_resource type="Animation" id="Animation_yeld0"]
+resource_name = "ending"
+length = 35.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 9.9, 15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 19.9, 25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../s1/PhotoidStrike:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.8, 9.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../s2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 15, 19.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../s3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 25, 30),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../4:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 30),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(34.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_end_game"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rt6g8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../s1/PhotoidStrike:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../s2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../s3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../4:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vtkj0"]
+_data = {
+"RESET": SubResource("Animation_rt6g8"),
+"ending": SubResource("Animation_yeld0")
+}
+
+[node name="Control" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d2o6l")
+
+[node name="1" type="RichTextLabel" parent="."]
+visible = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center] You think this is it? Just toss a rock at us and [wave]it's over and done with?[wave]"
+fit_content = true
+
+[node name="2" type="RichTextLabel" parent="."]
+visible = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center] After [color=cyan]everything [color=orange]you [color=green]did [color=blue]to [color=red]us[shake]?"
+fit_content = true
+
+[node name="3" type="RichTextLabel" parent="."]
+visible = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "I'll show you there's more than one way to [color=red]kill with a gun."
+fit_content = true
+
+[node name="4" type="RichTextLabel" parent="."]
+visible = false
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]See you in [wave]six million years."
+fit_content = true
+
+[node name="s1" type="Node2D" parent="."]
+
+[node name="PhotoidStrike" type="Sprite2D" parent="s1"]
+position = Vector2(677, 394)
+scale = Vector2(0.377884, 0.377884)
+texture = ExtResource("1_3vsy6")
+
+[node name="s2" type="Node2D" parent="."]
+visible = false
+
+[node name="Moon" type="Sprite2D" parent="s2"]
+position = Vector2(215, 251)
+rotation = -0.552056
+scale = Vector2(-0.359076, 0.313449)
+texture = ExtResource("2_14r5x")
+
+[node name="Hel" type="Sprite2D" parent="s2"]
+position = Vector2(1003, 419)
+scale = Vector2(0.428059, 0.428059)
+texture = ExtResource("3_l0n5w")
+
+[node name="Knoll" type="Sprite2D" parent="s2"]
+position = Vector2(357, 571)
+scale = Vector2(0.447757, 0.447757)
+texture = ExtResource("4_8hg8f")
+flip_h = true
+
+[node name="Pious" type="Sprite2D" parent="s2"]
+position = Vector2(737, 624)
+scale = Vector2(0.475985, 0.475985)
+texture = ExtResource("5_kuf6j")
+flip_h = true
+
+[node name="s3" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="s3"]
+offset_left = -79.0
+offset_top = -38.0
+offset_right = -39.0
+offset_bottom = 2.0
+scale = Vector2(34.539, 17.7869)
+color = Color(0.568627, 0.811765, 0.996078, 1)
+
+[node name="ColorRect" type="ColorRect" parent="s3"]
+material = SubResource("ShaderMaterial_vvql3")
+offset_left = -79.0
+offset_top = -38.0
+offset_right = -39.0
+offset_bottom = 2.0
+scale = Vector2(34.539, 17.7869)
+color = Color(0.568627, 0.811765, 0.996078, 1)
+
+[node name="Node2D" type="Node2D" parent="s3"]
+modulate = Color(1, 1, 1, 0.435294)
+position = Vector2(1061, 37)
+
+[node name="SmallStar" type="Sprite2D" parent="s3/Node2D"]
+texture = ExtResource("7_nep6w")
+
+[node name="SmallStar2" type="Sprite2D" parent="s3/Node2D"]
+position = Vector2(-225, 37)
+texture = ExtResource("7_nep6w")
+
+[node name="SmallStar3" type="Sprite2D" parent="s3/Node2D"]
+position = Vector2(-773, 13)
+scale = Vector2(0.597574, 0.597574)
+texture = ExtResource("7_nep6w")
+
+[node name="SmallStar4" type="Sprite2D" parent="s3/Node2D"]
+position = Vector2(-398, -9)
+scale = Vector2(0.597574, 0.597574)
+texture = ExtResource("7_nep6w")
+
+[node name="SmallStar5" type="Sprite2D" parent="s3/Node2D"]
+position = Vector2(-600, 15)
+scale = Vector2(0.396415, 0.396415)
+texture = ExtResource("7_nep6w")
+
+[node name="Volcanno" type="Sprite2D" parent="s3"]
+position = Vector2(494, 438)
+scale = Vector2(0.265774, 0.265774)
+texture = ExtResource("7_746e3")
+
+[node name="Observer" type="Sprite2D" parent="s3"]
+position = Vector2(251, 359)
+scale = Vector2(0.496306, 0.496306)
+texture = ExtResource("8_isd6i")
+flip_h = true
+
+[node name="Package" type="Sprite2D" parent="s3"]
+position = Vector2(867, 260)
+scale = Vector2(0.671102, 0.671102)
+texture = ExtResource("9_xxep5")
+flip_h = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+autoplay = "ending"
+libraries = {
+"": SubResource("AnimationLibrary_vtkj0")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_slgbl")
+autoplay = true

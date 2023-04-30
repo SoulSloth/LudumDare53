@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b51upwhfr318q"]
+[gd_scene load_steps=8 format=3 uid="uid://b51upwhfr318q"]
 
 [ext_resource type="Script" path="res://game_over.gd" id="1_ahhpq"]
 [ext_resource type="Texture2D" uid="uid://div8ubjn1kxye" path="res://assets/planets/Hel.png" id="2_pkesk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ciut1leg2mdx6" path="res://assets/planets/Moon.png" id="4_uplda"]
 [ext_resource type="Texture2D" uid="uid://cb4qsfuj2orwy" path="res://assets/planets/Pious.png" id="5_4tpg8"]
 [ext_resource type="Texture2D" uid="uid://b6bve8au3raf8" path="res://assets/planets/TheSun.png" id="6_qu5fn"]
+[ext_resource type="AudioStream" uid="uid://bftimiskqydnv" path="res://assets/music/openingEndingTrack.wav" id="7_dgkjf"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -107,6 +108,11 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 36
 text = "Return To Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dgkjf")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
